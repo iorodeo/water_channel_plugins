@@ -1,0 +1,17 @@
+<package>
+  <description brief="water_channel_plugins">
+
+     water_channel_plugins
+
+  </description>
+  <author></author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/water_channel_plugins</url>
+  <depend package="rospy"/>
+  <depend package="utilities"/>
+  <depend package="msg_and_srv"/>
+
+</package>
+
+

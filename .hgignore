@@ -1,0 +1,21 @@
+syntax: glob
+*.pyc
+*~
+*.o
+*.egg-info
+*.swp
+*.scad
+*.pkl
+*.komodo*
+*.egg-info
+*.hdf5
+.DS_Store
+build
+dist
+.komodo*
+deb_dist
+msg_gen
+srv_gen
+src/*/msg
+src/*/srv
+software/actions/msg
