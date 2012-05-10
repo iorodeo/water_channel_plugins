@@ -30,7 +30,7 @@ class SledControlPlugin(object):
             raise ValueError, 'incorrect startup mode - must be position trajectory'
 
         # Check for log file
-        if self.logFileName is None:
+        if logFileName is None:
             raise ValueError, 'no log file set, log file required for plugin to function'
         
         self.robotControlObj = robotControlObj
@@ -124,9 +124,11 @@ class SledControlPlugin(object):
                 self.doneFcn()
                 return
 
+            # Sort trials and get the latest
             trial_list = [x for x in list(f) if 'trial' in x]
-            print trial_list
-
+            trial_list.sort()
+            data  = f[trial_list[-1]]['data']
+            t, force = data['time'], data['force']
 
         # Design outscan set point array
         setptValues = run_defs.get_ramp( 
@@ -184,3 +186,15 @@ class SledControlPlugin(object):
         self.inProgressFcn(False)
 
 
+def trial_cmp(x,y):
+    """
+    Comparison function for sorting trials
+    """
+    num_x = int(x.split('_')[-1])
+    num_y = int(y.split('_')[-1])
+    if num_x > num_y:
+        return 1
+    elif num_x < num_y:
+        return -1
+    else:
+        return 0
